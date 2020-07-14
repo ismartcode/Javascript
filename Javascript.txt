@@ -1,0 +1,403 @@
+JavaScript Introduction
+===========================================================================================================================================
+ 
+JavaScript: It is a client side scripting language. It is used to create interactive websites. It was developed by Brendan Eich
+
+Advantages:
+-----------
+1. Client side validations
+2. No server burden
+3. Develop desktop Widgets
+4. Display Popup and Dialog boxes
+
+
+Dis Advantages:
+--------------
+1. Cross Browser Dependent Issues
+2. If we disables JavaScript, then there is no action events.
+3. security
+
+
+Display Possibilities:
+----------------------
+1. window.alert()
+2. document.write()
+3. innerHTML - document.getElementById('myid).innerHtml = var
+4. console.log (F12)
+
+
+There are 2 ways to write JavaScript code in to html:
+--------------------------------------------------------
+1. Internal JS - With in the web page - <script>alert("hi")</script>
+2. External JS - Out side of the web page - <script src="../js/myextjs.js"></script>
+
+Note: We can write  JavaScirpt code with in head tag and before closing <body> tag.
+But GetSure recommended that write JavaScript code always before closing <body> tag
+
+
+1. Internal JS Example:
+=======================
+
+    <!DOCTYPE html>
+    <html>
+    <body>
+    <h2>Welcome to GetSure JavaScript</h2>
+    <script>
+    document.write("Hello GetSure"); //alert("Hello GetSure");
+    /*
+      comments are 2 types: single line and multi line
+    */
+    </script>
+    </body>
+    </html>
+
+2. External JS Example:
+=======================
+
+    <!DOCTYPE html>
+    <html>
+    <body>
+    <h2>Welcome to GetSure JavaScript</h2>
+    <script src="../js/globalJavaScript.js"></script>
+    </body>
+    </html>	
+	
+globalJavaScript.js
+----------------------
+document.write("Hello GetSure"); //alert("Hello GetSure");
+
+	
+
+===========================================================================================================================================
+JavaScript Variables
+===========================================================================================================================================
+
+Variable: It stores the data in to memory location. Ex: var a = 10;
+
+Rules for Variables:
+--------------------
+1. Name must start with a letter (a to z or A to Z), underscore( _ ), or dollar( $ ) sign
+2. JavaScript variables are case sensitive.
+
+There are two types of variables:
+
+1. Local Variables: 
+   
+   a. It can access with in the function
+   b. variables with the same name can be used in different functions.
+   c. Local variables are created when a function starts, and deleted when the function is completed.
+
+
+2. Global Variables: 
+
+   a. It can access all the functions
+   b. variables with the same name can be used only once otherwise it will override.
+
+Example:
+========
+
+    <!DOCTYPE html>
+    <html>
+    <body>
+        
+    <script>
+    var globalvar=200;//gloabal variable
+    function a(){
+    var a_fn_localvar=300;//local variable    // Note: With out var keyword in the function is treated as Global Variable
+    document.write(globalvar+"<br/>");  //o/p -> 200
+    document.write(a_fn_localvar+"<br/>"); // o/p -> 300
+    }
+    function b(){
+    document.writeln(globalvar+"<br/>");  // o/p -> 200
+    document.writeln(a_fn_localvar+"<br/>");  // o/p ->
+    }
+    a();//calling JavaScript function
+    b();//calling JavaScript function
+    </script>
+    
+    </body>
+    </html>	
+	
+	
+Note: Automatically Global: If we write any variable with in the function without var keyword then it would be treated as a global variable.	
+	
+
+===========================================================================================================================================	
+JavaScript Data Types
+===========================================================================================================================================
+
+There are two types of data types in JavaScript.
+1. Primitive : String, Number, Boolean, Undefined, Null
+2. Non-Prmitive / reference : Object, Array, RegExp
+
+JavaScript is a loosely typed or a dynamic type language. That means you don't need to specify type of the variable 
+because type will get determined automatically while the program is being processed.
+
+Example:
+-----------
+    var length = 16;                                // Number
+    var lastName = "info";                          // String
+    var person; 		                            // undefined
+    var person = null;  		                    // null
+    var y = true;                                   // Boolean
+
+    var course = ["java", ".net", "UI"];            // Array
+    var x = {firstName:"getsure", lastName:"info"}; // Object
+    var patt = /getsure/i;                          // RegExp
+	
+
+===========================================================================================================================================	
+JavaScript Operators
+===========================================================================================================================================
+
+Operators are symbols that are used to perform operations on operands.
+Ex: int res = a+b;
+There are 6 types of Operators:
+1. Arithmetic Operators: +, -, *, /, %, ++, --
+2. Comparison Operators : ==, ===, !=	, !==, >, >=, <, <=
+3. Bitwise Operators : &, |, ^, ~, <<, >>, >>>
+4. Logical Operators : &&, ||, !
+5. Assignment Operators : =, +=, -=, *=, /=, %=
+6. Conditional / Ternary Operator : test ? expression1 : expression2
+
+Example-1:
+----------
+
+    <!DOCTYPE html>
+    <html>
+    <body>
+    <h1>Operators</h1>
+    <p id="myid"></p>
+
+    <script>
+    var x = 10;
+    x += 5;
+    document.getElementById("myid").innerHTML = x;
+    </script>
+
+    </body>
+    </html>
+
+Example-2:
+----------
+
+    <!DOCTYPE html>
+    <html>
+    <body>
+    <p>Input your age and click the button:</p>
+    <input id="age" value="18" />
+    <button onclick="myFunction()">Try it</button>
+    <p id="demo"></p>
+
+    <script>
+    function myFunction() {
+    var age, marriage;
+    age = document.getElementById("age").value;
+    marriage = (age < 25) ? "Too young":"Old enough";
+    document.getElementById("demo").innerHTML = marriage + " to marriage.";
+    }
+    </script>
+    </body>
+    </html>	
+
+
+===========================================================================================================================================	
+JavaScript Conditional Statements
+===========================================================================================================================================
+
+Conditional stmts are used to perform different actions based on different conditions.
+
+if statement: to specify a block of JavaScript code to be executed if a condition is true.
+else if statement: to specify a new condition if the first condition is false.
+else statement: to specify a block of code to be executed if the condition is false.
+switch statement: to select one of many blocks of code to be executed.
+
+if..else if..else Syntax:
+-------------------------
+
+    if (expression 1){
+       Statement(s) to be executed if expression 1 is true
+    }
+    else if (expression 2){
+       Statement(s) to be executed if expression 2 is true
+    }
+    else{
+       Statement(s) to be executed if no expression is true
+    }
+
+if..else if..else Example:
+--------------------------
+ <html>
+ <body>
+ <script type="text/javascript">
+    var class1 = "java";
+   //Note: Dont take class as variable because
+  // that keyword is already available in JS
+    if(class1 == "java" ) {
+    document.write("<b>Java classes</b>");
+    }
+    else if(class1 == "UI" ) {
+    document.write("<b>UI classes</b>");
+    }
+    else {
+    document.write("<b>.NET classes</b>");
+    }
+ </script>
+ </body>
+ </html>
+
+
+Switch Syntax:
+==============
+
+ switch (expression)
+ {
+   case condition 1: statement(s)
+   break;
+   case condition 2: statement(s)
+   break;
+   ...
+   case condition n: statement(s)
+   break;
+   default: statement(s)
+ }
+
+Switch Example:
+-------------------
+ <html>
+   <body>
+      <script type="text/javascript">
+            var grade='A';
+            document.write("Entering switch block<br />");
+            switch (grade)
+            {
+               case 'A': document.write("Distinction");
+               break;
+               case 'B': document.write("First Class");
+               break;
+               case 'C': document.write("Passed");
+               break;
+               default:  document.write("You r not eligible")
+            }
+            document.write("Exiting switch block");
+      </script>
+   </body>
+ </html>	
+ 
+ 
+ 
+=========================================================================================================================================== 
+JavaScript Loops
+===========================================================================================================================================
+ 
+
+Loops can execute a block of code a number of times.
+
+for loop: loops through a block of code a number of times
+while loop: It verifies the condition before entering into the loop to see whether the next loop iteration should occur or not
+do..while loop: It executes the first iteration without checking the condition, it verifies the condition after finishing each iteration.
+for..in loop: It is enhanced for loop
+
+for loop Syntax:
+----------------
+
+ for (initialization; test condition; iteration statement){
+   Statement(s) to be executed if test condition is true
+ }
+
+for loop Example:
+------------------
+
+ <html>
+   <body>
+      <script type="text/javascript">
+            var count;
+            for(count = 0; count < 10; count++){
+               document.write("Current Count : " + count );
+               document.write("<br />");
+            }
+      </script>
+   </body>
+ </html>
+
+
+while loop Syntax:
+---------------------
+ while (expression){
+   Statement(s) to be executed if expression is true
+ }
+
+While Loop Example:
+------------------------
+ <html>
+   <body>
+      <script type="text/javascript">
+            var count = 0;
+            while (count < 10)
+            {
+               document.write("Current Count : " + count + "<br />");
+               count++;
+            }
+      </script>
+   </body>
+ </html>
+
+
+do..while loop Syntax:
+----------------------
+
+ do{
+    Statement(s) to be executed;
+ }  while (expression);
+
+do..while loop Example:
+-----------------------
+
+  <html>
+   <body>
+      <script type="text/javascript">
+            var count = 0;
+            do {
+               document.write("Current Count : " + count + "<br />");
+               count++;
+            }
+            while (count < 5);
+      </script>
+      <p>Set the variable to different value and then try...</p>
+   </body>
+  </html> 
+  
+---------------------------------  
+IIQ: Diff b/w while and do-while?
+---------------------------------
+
+In while loop, if the condition is not satisfied even once, the loop will not be executed.
+Whereas in do-while loop, even if the condition is not true, the loop is executed atleast once.  
+
+  
+===========================================================================================================================================
+JavaScript Break & Continue
+===========================================================================================================================================
+
+break statement "jumps out" of a loop. continue statement "jumps over" one iteration in the loop
+
+
+Break & Continue Example:
+--------------------------
+
+<html>
+<html>
+    <body>
+
+        <script>
+            var i;
+            for (i = 0; i < 10; i++) {
+                if (i === 5) {
+                    break;  //continue;
+                }
+                document.write("Result  is -->" + i + "<br/>");
+            }
+        </script>
+
+    </body>
+</html> 
